@@ -71,11 +71,11 @@ P_RETVAL=$?
 echo "    PasswordAuthentication yes" >> /etc/ssh/ssh_config
 echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
-## Easy "cd" to share folder
+## Alias for "cd" to share folder
 cmd='cd /vagrant/forVm'
 echo "alias v=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
 
-## Easy Terraform apply
+## Alias for Terraform Apply
 cmd='
 terraform destroy -auto-approve
 terraform init 
@@ -84,10 +84,16 @@ cat terraform.tfstate|grep public_ip|grep -v associate
 '
 echo "alias ta=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
 
-## Easy Terraform destroy
+## Alias for Terraform Destroy
 cmd='terraform destroy -auto-approve
 '
 echo "alias td=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
+
+## Alias for Delete aws Key pair
+cmd='aws ec2 delete-key-pair --key-name mykey
+'
+echo "alias dk=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
+
 
 # clean up
 apt-get clean
