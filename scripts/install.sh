@@ -68,7 +68,8 @@ P_RETVAL=$?
 
 # Setting for Convenient
 ## Enable ssh
-echo PasswordAuthentication yes >> /etc/ssh/ssh_config
+echo "    PasswordAuthentication yes" >> /etc/ssh/ssh_config
+echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 ## Easy "cd" to share folder
 cmd='cd /vagrant/forVm'
@@ -84,7 +85,8 @@ cat terraform.tfstate|grep public_ip|grep -v associate
 echo "alias ta=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
 
 ## Easy Terraform destroy
-cmd='terraform destroy -auto-approve'
+cmd='terraform destroy -auto-approve
+'
 echo "alias td=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
 
 # clean up
