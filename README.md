@@ -15,6 +15,7 @@ vagrant destroy -f ;vagrant up;vagrant ssh
 
 # tools included
 * Terraform
+* git
 * AWS CLI
 * AWS Elastic Beanstalk CLI
 * Packer
