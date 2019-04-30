@@ -1,66 +1,53 @@
 #!/bin/bash
-set -x
-
-if [ -e /etc/redhat-release ] ; then
-  REDHAT_BASED=true
-fi
 
 TERRAFORM_VERSION="0.11.13"
 PACKER_VERSION="1.4.0"
+
+# System Variable Setting
+export LC_ALL=C.UTF-8
+export DEBIAN_FRONTEND=noninteractive
+echo "export LC_ALL=C.UTF-8">>/etc/bash.bashrc
+echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
+
+
 # create new ssh key
-[[ ! -f /home/ubuntu/.ssh/mykey ]] \
-&& mkdir -p /home/ubuntu/.ssh \
-&& ssh-keygen -f /home/ubuntu/.ssh/mykey -N '' \
-&& chown -R ubuntu:ubuntu /home/ubuntu/.ssh
+[[ ! -f /home/vagrant/.ssh/mykey ]] \
+&& mkdir -p /home/vagrant/.ssh \
+&& ssh-keygen -f /home/vagrant/.ssh/mykey -N '' \
+&& chown -R vagrant:vagrant /home/vagrant/.ssh
+
 
 # install packages
-if [ ${REDHAT_BASED} ] ; then
-  yum -y update
-  yum install -y docker ansible unzip wget
-else 
-  apt-get update
-  apt-get -y install docker.io ansible unzip python3-pip #python-pip
-fi
-# add docker privileges
+apt-get update
+apt-get -y install docker.io ansible unzip 
+## add docker privileges
 usermod -G docker vagrant
 
 # install pip
-pip3 install -U pip
+apt-get -y install python3-pip
+python3 -m pip install --user --upgrade pip
 
-if [[ $? == 127 ]]; then
-    # apt-get -y install python-pip
-    # pip2 install --upgrade pip
-    apt-get -y install python3-pip
-    pip3 install --upgrade pip
-fi
+# install awscli and ebcli
+python3 -m pip install  awscli
+python3 -m pip install  awsebcli
+
+## pip upgrade for pip3 command
+# echo "y"|python3 -m pip uninstall pip 
+# apt-get install python3-pip   --reinstall
+# pip3 install --user --upgrade pip
+
 
 # for Language Setting
-cat >> /etc/bash.bashrc<<EOF
+cat <<EOF>> /etc/bash.bashrc
 set input-meta on
 set output-meta on
 set convert-meta off
 EOF
-# apt-get install -y \
-#     locales \
-#     language-pack-fi  \
-#     language-pack-en && \
-#     export LANGUAGE=en_US.UTF-8 && \
-#     export LANG=en_US.UTF-8 && \
-#     export LC_ALL=en_US.UTF-8 && \
-#     locale-gen en_US.UTF-8 && \
-#     dpkg-reconfigure locales
 
-# locale-gen ko_KR.UTF-8    
 echo "export LC_ALL=C.UTF-8" >> /etc/bash.bashrc
-    
 
 
-
-# install awscli and ebcli
-pip3 install -U awscli
-pip3 install -U awsebcli
-
-#terraform
+# install terraform
 T_VERSION=$(/usr/local/bin/terraform -v | head -1 | cut -d ' ' -f 2 | tail -c +2)
 T_RETVAL=${PIPESTATUS[0]}
 
@@ -69,7 +56,7 @@ T_RETVAL=${PIPESTATUS[0]}
 && unzip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin \
 && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
-# packer
+# install packer
 P_VERSION=$(/usr/local/bin/packer -v)
 P_RETVAL=$?
 
@@ -78,7 +65,27 @@ P_RETVAL=$?
 && unzip -o packer_${PACKER_VERSION}_linux_amd64.zip -d /usr/local/bin \
 && rm packer_${PACKER_VERSION}_linux_amd64.zip
 
+
+# Setting for Convenient
+## Enable ssh
+echo PasswordAuthentication yes >> /etc/ssh/ssh_config
+
+## Easy "cd" to share folder
+cmd='cd /vagrant/forVm'
+echo "alias v=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
+
+## Easy Terraform apply
+cmd='
+terraform destroy -auto-approve
+terraform init 
+terraform apply -auto-approve
+cat terraform.tfstate|grep public_ip|grep -v associate
+'
+echo "alias ta=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
+
+## Easy Terraform destroy
+cmd='terraform destroy -auto-approve'
+echo "alias td=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
+
 # clean up
-if [ ! ${REDHAT_BASED} ] ; then
-  apt-get clean
-fi
+apt-get clean
