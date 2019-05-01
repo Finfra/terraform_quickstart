@@ -1,22 +1,33 @@
-forVm
+forVm/*
+!forVm/.ThisFolderIsIgnoredByGit
+
+# for Vagrant
 .vagrant
-*/.vagrant
+
+# for TerraformFile
 */terraform.tfvars
 */terraform.tfstate
 */terraform.tfstate.backup
 */.terraform
 */mykey*
 
-# macOS
+
+# Vagrant file
+.vagrant
+
+# General
+*/.*
+
+# for macOS
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Icon must end with two \r
+## Icon must end with  \r
 Icon?
 
 # Thumbnails
 ._*
+
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
 .fseventsd
@@ -31,3 +42,12 @@ Icon?
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# for Python and Jupyter
+__pycache__
+*/*.pyc
+## Jupyter
+.Trash-0
+**/.ipynb_checkpoints
+**/.ipynb_checkpoints/*.ipynb
+

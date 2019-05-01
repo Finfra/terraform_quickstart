@@ -1,4 +1,4 @@
-system('mkdir forVm')
+system('[ ! -d forVm ] && mkdir forVm')
 Vagrant.configure(2) do |config|
 	config.vm.define "terraformBox" do |devbox|
 		devbox.vm.box = "bento/ubuntu-18.04"
