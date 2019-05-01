@@ -71,7 +71,7 @@ P_RETVAL=$?
 echo "    PasswordAuthentication yes" >> /etc/ssh/ssh_config
 echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 ## EDITOR
-echo "export EDITOR=vi" >> /etc/ssh/ssh_config
+echo "export EDITOR=vi" >> /etc/bash.bashrc
 
 ## Alias for "cd" to share folder
 cmd='cd /vagrant/forVm'
