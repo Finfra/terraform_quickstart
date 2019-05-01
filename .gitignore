@@ -1,3 +1,6 @@
+
+# forVM/terraform-course
+# forVM/terraform-course copy
 # forVm/*
 # !forVm/.ThisFolderIsIgnoredByGit
 
@@ -51,5 +54,3 @@ __pycache__
 **/.ipynb_checkpoints
 **/.ipynb_checkpoints/*.ipynb
 
-forVM/terraform-course
-forVM/terraform-course copy
