@@ -1,3 +1,8 @@
+# This repository is obsolete. 
+    Use : [https://github.com/Finfra/terraform-quickstart](https://github.com/Finfra/terraform-quickstart)
+
+
+
 # Orginal Source Code
 * [https://github.com/wardviaene/devops-box](https://github.com/wardviaene/devops-box)
 
