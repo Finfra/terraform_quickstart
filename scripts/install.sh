@@ -70,6 +70,8 @@ P_RETVAL=$?
 ## Enable ssh
 echo "    PasswordAuthentication yes" >> /etc/ssh/ssh_config
 echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+## EDITOR
+echo "export EDITOR=vi" >> /etc/ssh/ssh_config
 
 ## Alias for "cd" to share folder
 cmd='cd /vagrant/forVm'

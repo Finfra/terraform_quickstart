@@ -6,11 +6,11 @@ forVm/*
 .vagrant
 
 # for TerraformFile
-*/terraform.tfvars
-*/terraform.tfstate
-*/terraform.tfstate.backup
-*/.terraform
-*/mykey*
+terraform.tfvars
+terraform.tfstate
+terraform.tfstate.backup
+.terraform
+mykey*
 
 
 # Vagrant file
