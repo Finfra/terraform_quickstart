@@ -1,5 +1,5 @@
-forVm/*
-!forVm/.ThisFolderIsIgnoredByGit
+# forVm/*
+# !forVm/.ThisFolderIsIgnoredByGit
 
 # for Vagrant
 .vagrant
