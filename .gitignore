@@ -1,8 +1,5 @@
-
-# forVM/terraform-course
-# forVM/terraform-course copy
-# forVm/*
-# !forVm/.ThisFolderIsIgnoredByGit
+forVm/*
+!forVm/.ThisFolderIsIgnoredByGit
 
 # for Vagrant
 .vagrant
