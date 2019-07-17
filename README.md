@@ -52,3 +52,9 @@ aws ec2 delete-key-pair --key-name mykey
 * Docker
 * python3
 * Ansible
+
+# ToDo
+* Apply AutoComplete
+```
+terraform -install-autocomplete
+```
