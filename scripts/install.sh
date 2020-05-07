@@ -51,7 +51,7 @@ set output-meta on
 set convert-meta off
 EOF
 
-echo "export LC_ALL=C.UTF-8" >> /etc/bash.bashrc
+#echo "export LC_ALL=C.UTF-8" >> /etc/bash.bashrc
 
 
 # install terraform
