@@ -11,8 +11,8 @@ echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
 
 # create new ssh key
 [[ ! -f /home/vagrant/mykey ]] \
-&& ssh-keygen -f /home/vagrant/.ssh/mykey -N ''    \
-&& chown -R vagrant:vagrant /home/vagrant/.ssh
+&& ssh-keygen -f /home/vagrant/mykey -N ''    \
+&& chown -R vagrant:vagrant /home/vagrant/mykey*
 
 # old
 # [[ ! -f /home/vagrant/.ssh/mykey ]] \
