@@ -28,13 +28,13 @@ apt -y install docker.io ansible unzip
 usermod -G docker vagrant
 
 # install pip
-apt -y install  python3.7
+apt -y install  python3.8
 apt -y install python3-pip
-python3.7 -m pip install --user --upgrade pip
+python3.8 -m pip install --user --upgrade pip
 
 # install awscli and ebcli
-python3.7 -m pip install  awscli
-python3.7 -m pip install  awsebcli
+python3.8 -m pip install  awscli
+python3.8 -m pip install  awsebcli
 
 complete -C aws_completer aws
 
