@@ -10,14 +10,19 @@ echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
 
 
 # create new ssh key
-[[ ! -f /home/vagrant/.ssh/mykey ]] \
-&& mkdir -p /home/vagrant/.ssh \
-&& ssh-keygen -f /home/vagrant/.ssh/mykey -N '' \
+[[ ! -f /home/vagrant/mykey ]] \
+&& ssh-keygen -f /home/vagrant/.ssh/mykey -N ''    \
 && chown -R vagrant:vagrant /home/vagrant/.ssh
+
+# old
+# [[ ! -f /home/vagrant/.ssh/mykey ]] \
+# && mkdir -p /home/vagrant/.ssh \
+# && ssh-keygen -f /home/vagrant/.ssh/mykey -N '' \
+# && chown -R vagrant:vagrant /home/vagrant/.ssh
 
 
 # install packages
-apt-get update
+apt -y update
 apt -y install docker.io ansible unzip
 ## add docker privileges
 usermod -G docker vagrant
