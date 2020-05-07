@@ -1,8 +1,7 @@
 #!/bin/bash
 
-TERRAFORM_VERSION="0.11.13"
-PACKER_VERSION="1.4.0"
-
+TERRAFORM_VERSION="0.12.24"
+PACKER_VERSION="1.5.6"
 # System Variable Setting
 export LC_ALL=C.UTF-8
 export DEBIAN_FRONTEND=noninteractive
@@ -19,20 +18,23 @@ echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
 
 # install packages
 apt-get update
-apt-get -y install docker.io ansible unzip 
+apt -y install docker.io ansible unzip
 ## add docker privileges
 usermod -G docker vagrant
 
 # install pip
-apt-get -y install python3-pip
-python3 -m pip install --user --upgrade pip
+apt -y install  python3.7
+apt -y install python3-pip
+python3.7 -m pip install --user --upgrade pip
 
 # install awscli and ebcli
-python3 -m pip install  awscli
-python3 -m pip install  awsebcli
+python3.7 -m pip install  awscli
+python3.7 -m pip install  awsebcli
+
+complete -C aws_completer aws
 
 ## pip upgrade for pip3 command
-# echo "y"|python3 -m pip uninstall pip 
+# echo "y"|python3 -m pip uninstall pip
 # apt-get install python3-pip   --reinstall
 # pip3 install --user --upgrade pip
 
@@ -80,7 +82,7 @@ echo "alias v=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
 ## Alias for Terraform Apply
 cmd='
 terraform destroy -auto-approve
-terraform init 
+terraform init
 terraform apply -auto-approve
 cat terraform.tfstate|grep public_ip|grep -v associate
 '
