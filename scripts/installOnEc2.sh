@@ -50,8 +50,7 @@ T_RETVAL=${PIPESTATUS[0]}
 P_VERSION=$(/usr/local/bin/packer -v)
 P_RETVAL=$?
 
-[[ $P_VERSION != $PACKER_VERSION ]] || [[ $P_RETVAL != 1 ]] && [[ $1 != 1 ]] \
-    && rm packer_${PACKER_VERSION}_linux_amd64.*                                 \
+[[ $P_VERSION != $PACKER_VERSION ]] || [[ $P_RETVAL != 1 ]]  \
     && wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip \
     && unzip -o packer_${PACKER_VERSION}_linux_amd64.zip -d /usr/local/bin \
     && rm packer_${PACKER_VERSION}_linux_amd64.*
@@ -82,3 +81,5 @@ echo "alias dk=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
 
 # clean up
 apt-get clean
+
+. ~/.profile
