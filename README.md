@@ -7,7 +7,14 @@
 # DevOps box
 * A vagrant project with an ubuntu box with the tools needed to do DevOps
 
-# Usage
+# Usage1 : Install on Ec2 Instacne
+```
+sudo -i
+git clone http://github.com/finfra/terraform-quickstart.git
+. terraform-quickstart/scripts/installOnEc2.sh
+
+```
+# Usage2 : Vagrant
 ```
 git clone http://github.com/finfra/terraform-quickstart.git
 cd terraform-quickstart
