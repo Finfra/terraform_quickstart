@@ -1,10 +1,9 @@
 
 export LC_ALL=C.UTF-8
 export DEBIAN_FRONTEND=noninteractive
+
 echo "export LC_ALL=C.UTF-8">>/etc/bash.bashrc
 echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
-
-sudo -i
 
 TERRAFORM_VERSION="0.15.4"
 PACKER_VERSION="1.7.2"
@@ -14,7 +13,7 @@ PACKER_VERSION="1.7.2"
 apt -y update
 apt -y install docker.io ansible unzip
 
-usermod -G docker 
+usermod -G docker
 
 
 # install pip
@@ -83,4 +82,3 @@ echo "alias dk=\"echo '$cmd';$cmd\"">>/etc/bash.bashrc
 
 # clean up
 apt-get clean
-
