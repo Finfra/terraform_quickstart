@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TERRAFORM_VERSION="0.13.3"
-PACKER_VERSION="1.6.2"
+TERRAFORM_VERSION="0.15.4"
+PACKER_VERSION="1.7.2"
 # System Variable Setting
 export LC_ALL=C.UTF-8
 export DEBIAN_FRONTEND=noninteractive

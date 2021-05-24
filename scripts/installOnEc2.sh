@@ -1,17 +1,22 @@
 
+# Version Setting
+TERRAFORM_VERSION="0.15.4"
+PACKER_VERSION="1.7.2"
+
+# System Variable Setting
+
 export LC_ALL=C.UTF-8
 export DEBIAN_FRONTEND=noninteractive
 
 echo "export LC_ALL=C.UTF-8">>/etc/bash.bashrc
 echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
 
-TERRAFORM_VERSION="0.15.4"
-PACKER_VERSION="1.7.2"
-# System Variable Setting
+hostname i1
+
 
 
 apt -y update
-apt -y install docker.io ansible unzip
+apt -y install docker.io ansible unzip 
 
 usermod -G docker
 
@@ -55,6 +60,11 @@ P_RETVAL=$?
     && unzip -o packer_${PACKER_VERSION}_linux_amd64.zip -d /usr/local/bin \
     && rm packer_${PACKER_VERSION}_linux_amd64.*
 
+# Setting for ssh
+x=`cat /etc/ssh/ssh_config|grep \^StrictHostKeyChecking`
+if [ ${#x} -eq 0 ] ;then 
+    echo "StrictHostKeyChecking no">>/etc/ssh/ssh_config
+fi
 
 # Setting for Convenient
 echo "export EDITOR=vi" >> /etc/bash.bashrc
