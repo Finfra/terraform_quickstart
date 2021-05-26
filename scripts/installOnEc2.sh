@@ -16,8 +16,7 @@ hostname i1
 
 
 apt -y update
-apt -y install docker.io ansible unzip 
-
+apt -y install docker.io ansible unzip mysql-client
 usermod -G docker
 
 
