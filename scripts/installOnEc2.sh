@@ -12,7 +12,7 @@ echo "export LC_ALL=C.UTF-8">>/etc/bash.bashrc
 echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
 
 hostname i1
-
+hostname > /etc/hostname
 
 
 apt -y update
