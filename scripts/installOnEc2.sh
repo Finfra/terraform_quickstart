@@ -16,7 +16,7 @@ hostname > /etc/hostname
 
 
 apt -y update
-apt -y install docker.io docker-compose ansible unzip mysql-client
+apt -y install docker.io docker-compose unzip mysql-client
 groupadd docker
 usermod -aG docker ubuntu
 
@@ -25,6 +25,16 @@ usermod -aG docker ubuntu
 apt -y install  python3.8
 apt -y install python3-pip
 python3.8 -m pip install --user --upgrade pip
+
+[[ -f /usr/bin/python ]]&&rm /usr/bin/python
+ln -s /usr/bin/python3.8 /usr/bin/python
+[[ -f /usr/bin/pip ]]&&rm /usr/bin/pip
+ln -s /usr/local/bin/pip3.8 /usr/bin/pip
+[[ -f /usr/bin/pip3 ]]&&rm /usr/bin/pip3
+ln -s /usr/local/bin/pip3.8 /usr/bin/pip3
+
+
+python3.8 -m pip install ansible
 
 # install awscli and ebcli
 python3.8 -m pip install  awscli
