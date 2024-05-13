@@ -36,9 +36,9 @@ ln -s /usr/local/bin/pip3.8 /usr/bin/pip3
 
 python3.8 -m pip install ansible
 
-# install awscli and ebcli
-python3.8 -m pip install  awscli
-python3.8 -m pip install  awsebcli
+# # install awscli and ebcli
+# python3.8 -m pip install  awscli
+# python3.8 -m pip install  awsebcli
 
 complete -C aws_completer aws
 
@@ -51,7 +51,8 @@ EOF
 
 # Install AwsCli
 python3.10 -m pip install  awscli
-complete -C aws_completer aws
+echo "complete -C aws_completer aws">> /etc/bash.bashrc
+
 
 
 # install terraform

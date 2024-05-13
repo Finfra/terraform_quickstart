@@ -32,9 +32,9 @@ apt -y install  python3.8
 apt -y install python3-pip
 python3.8 -m pip install --user --upgrade pip
 
-# install awscli and ebcli
-python3.8 -m pip install  awscli
-python3.8 -m pip install  awsebcli
+# # install awscli and ebcli
+# python3.8 -m pip install  awscli
+# python3.8 -m pip install  awsebcli
 
 complete -C aws_completer aws
 
@@ -55,7 +55,7 @@ EOF
 
 # Install AwsCli
 python3.10 -m pip install  awscli
-complete -C aws_completer aws
+echo "complete -C aws_completer aws">> /etc/bash.bashrc
 
 
 # install terraform
