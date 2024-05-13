@@ -49,6 +49,9 @@ set output-meta on
 set convert-meta off
 EOF
 
+# Install AwsCli
+python3.10 -m pip install  awscli
+complete -C aws_completer aws
 
 
 # install terraform

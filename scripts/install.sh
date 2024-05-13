@@ -53,6 +53,10 @@ EOF
 
 # echo "export LC_ALL=C.UTF-8" >> /etc/bash.bashrc
 
+# Install AwsCli
+python3.10 -m pip install  awscli
+complete -C aws_completer aws
+
 
 # install terraform
 T_VERSION=$(/usr/local/bin/terraform -v | head -1 | cut -d ' ' -f 2 | tail -c +2)
