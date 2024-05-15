@@ -1,12 +1,17 @@
 #!/bin/bash
 
+# Version Setting
 TERRAFORM_VERSION="1.8.3"
 PACKER_VERSION="1.10.3"
+
 # System Variable Setting
 export LC_ALL=C.UTF-8
 export DEBIAN_FRONTEND=noninteractive
 echo "export LC_ALL=C.UTF-8">>/etc/bash.bashrc
 echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
+
+hostname i1
+hostname > /etc/hostname
 
 
 # create new ssh key
@@ -14,11 +19,6 @@ echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
 && ssh-keygen -f /home/vagrant/mykey -N ''    \
 && chown -R vagrant:vagrant /home/vagrant/mykey*
 
-# old
-# [[ ! -f /home/vagrant/.ssh/mykey ]] \
-# && mkdir -p /home/vagrant/.ssh \
-# && ssh-keygen -f /home/vagrant/.ssh/mykey -N '' \
-# && chown -R vagrant:vagrant /home/vagrant/.ssh
 
 
 # install packages
