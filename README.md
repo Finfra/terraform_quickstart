@@ -12,6 +12,11 @@
 sudo -i
 git clone http://github.com/finfra/terraform-quickstart.git
 . terraform-quickstart/scripts/installOnEc2.sh
+exit
+echo 'export AWS_ACCESS_KEY_ID="xxxxxxxxxxxx"'                          >> ~/.bashrc
+echo 'export AWS_SECRET_ACCESS_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'  >> ~/.bashrc
+. ~/.bashrc
+  
 
 ```
 # Usage2 : Vagrant
