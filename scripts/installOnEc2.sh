@@ -1,13 +1,12 @@
+#!/bin/bash
 
 # Version Setting
 TERRAFORM_VERSION="1.8.3"
 PACKER_VERSION="1.10.3"
 
 # System Variable Setting
-
 export LC_ALL=C.UTF-8
 export DEBIAN_FRONTEND=noninteractive
-
 echo "export LC_ALL=C.UTF-8">>/etc/bash.bashrc
 echo "export DEBIAN_FRONTEND=noninteractive">>/etc/bash.bashrc
 
@@ -15,13 +14,18 @@ hostname i1
 hostname > /etc/hostname
 
 
+# create new ssh key
+[[ ! -f /home/ubuntu/mykey ]] \
+&& ssh-keygen -f /home/vagrant/mykey -N ''    \
+&& chown -R ubuntu:ubuntu /home/vagrant/mykey*
+
+# install packages
 apt -y update
 apt -y install docker.io docker-compose unzip mysql-client
 groupadd docker
 usermod -aG docker ubuntu
 
 # install pip
-
 apt -y install  python3.8
 apt -y install python3-pip
 python3.8 -m pip install --user --upgrade pip
